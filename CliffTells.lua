@@ -10,6 +10,7 @@ CLIFFTELLS_VERSION = GetAddOnMetadata("CliffTells", "Version") -- Grab version f
 CliffTells:RegisterEvent("ADDON_LOADED") -- Register event when addon is loaded
 CliffTells:RegisterEvent("PLAYER_LOGIN")
 CliffTells:RegisterEvent("CHAT_MSG_SYSTEM")
+CliffTells:RegisterEvent("GUILD_ROSTER_UPDATE")
 CliffTells:RegisterEvent("PLAYER_LEVEL_UP")
 CliffTells:RegisterEvent("CHAT_MSG_ADDON")
 CliffTells:RegisterEvent("CHAT_MSG_COMBAT_FRIENDLY_DEATH")
@@ -1775,6 +1776,9 @@ function CliffTells:OnEvent()
     elseif event == "CHAT_MSG_SYSTEM" then
 		CliffTells:Fetchsysmsg(arg1)
         CliffTells:FetchTime(arg1)
+        --CliffTells:PingGuildies()
+
+    elseif event == "GUILD_ROSTER_UPDATE" then
         CliffTells:PingGuildies()
 
     elseif event == "PLAYER_LEVEL_UP" then
