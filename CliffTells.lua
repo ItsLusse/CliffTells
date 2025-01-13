@@ -1309,6 +1309,10 @@ function CliffTells:Fetchsysmsg(msg)
         CliffTells:RemoveFromSyncTable(charname)
 		return
 
+    elseif string.find(msg,"has come online") then
+        CliffTells:PingGuildies()
+		return
+
     elseif string.find(msg,"has left the guild") then
         local _,_,charname = string.find(msg,"(%a+) has left the guild")
         
@@ -1776,7 +1780,6 @@ function CliffTells:OnEvent()
     elseif event == "CHAT_MSG_SYSTEM" then
 		CliffTells:Fetchsysmsg(arg1)
         CliffTells:FetchTime(arg1)
-        --CliffTells:PingGuildies()
 
     elseif event == "GUILD_ROSTER_UPDATE" then
         CliffTells:PingGuildies()
