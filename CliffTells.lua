@@ -1760,7 +1760,6 @@ function CliffTells:OnEvent()
         CliffTells.Minimap:CreateMinimapIcon()
 
         table.insert(CliffTells_SyncGuild, 1, UnitName("player"))
-        CliffTells:PingGuildies()
 
         SendChatMessage(".hcm 1", "GUILD")
 
@@ -1776,6 +1775,7 @@ function CliffTells:OnEvent()
         if GetCVar("guildMemberNotify")  == "0" then
             SetCVar("guildMemberNotify", "1")
         end
+        SendAddonMessage("CliffTellsPing", "pingping", "GUILD")
         
     elseif event == "CHAT_MSG_SYSTEM" then
 		CliffTells:Fetchsysmsg(arg1)
